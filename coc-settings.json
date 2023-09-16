@@ -1,0 +1,24 @@
+{
+  "python": {
+    "formatting": { "provider": "black" },
+    "analysis": {
+      "useLibraryCodeForTypes": true,
+      "diagnosticSeverityOverrides": {
+        "reportGeneralTypeIssues": "none",
+        "reportOptionalMemberAccess": "none",
+        "reportOptionalSubscript": "none",
+        "reportPrivateImportUsage": "none"
+      }
+    }
+  },
+  "pyright": {
+    "inlayHints": {
+      "functionReturnTypes": true,
+      "variableTypes": false
+    }
+  },
+  "suggest.noselect": true,
+  "rust-analyzer.checkOnSave": true,
+  "clangd.path": "~\\AppData\\Local\\coc\\extensions\\coc-clangd-data\\install\\15.0.6\\clangd_15.0.6\\bin\\clangd.exe",
+  "snippets.ultisnips.pythonPrompt": false
+}
