@@ -6,7 +6,7 @@ call plug#begin('~/vimfiles/plugged')
 Plug 'folke/tokyonight.nvim'
 Plug 'catppuccin/nvim', { 'as': 'catppuccin' }
 Plug 'olivercederborg/poimandres.nvim'
-Plug 'ryanoasis/vim-devicons'
+Plug 'navarasu/onedark.nvim'
 
 Plug 'preservim/nerdtree'
 Plug 'terrortylor/nvim-comment'
@@ -15,6 +15,8 @@ Plug 'mg979/vim-visual-multi'
 Plug 'nvim-treesitter/nvim-treesitter'
 
 Plug 'nvim-lualine/lualine.nvim'
+Plug 'romgrk/barbar.nvim'
+Plug 'nvim-tree/nvim-web-devicons'
 Plug 'Yggdroot/indentLine'
 Plug 'mattn/emmet-vim'
 Plug 'lervag/vimtex'
@@ -31,6 +33,13 @@ set t_Co=256
 
 lua << EOF
     require'nvim_comment'.setup {}
+    require'onedark'.setup{
+        style="deep",
+        transparent=true,
+        highlights={
+            ["@comment"] = {fg="#aaaaaa"} 
+        }
+    }
   require'poimandres'.setup {
         bold_vert_split = false, -- use bold vertical separators
         dim_nc_background = false, -- dim 'non-current' window backgrounds
@@ -64,18 +73,22 @@ lua << EOF
   }
   require'lualine'.setup {
         options = {
-            theme='catppuccin'
+            theme='onedark'
         }
+    }
+  require'barbar'.setup{
+        insert_at_end=true
     }
 EOF
 
+colorscheme onedark
 " colorscheme catppuccin-mocha
-colorscheme tokyonight-night
+" colorscheme tokyonight-night
 " colorscheme poimandres
 
 "}}}
 
-" MAPPINGS ----------------------------------------------------------{{{
+" SETTING ----------------------------------------------------------{{{
 syntax on
 
 set number
@@ -91,13 +104,6 @@ set nowrap
 set clipboard=unnamed
 set laststatus=2 " for lightline.vim
 let mapleader = " "
-
-nmap <C-b> :NERDTreeToggle<CR> 
-nmap <leader><CR> :vert sb #<CR> 
-let g:NERDCreateDefaultMappings = 0
-map <leader>cc <plug>NERDCommenterToggle
-" vnoremap <leader>cc :call nerdcommenter#Comment('x','toggle')<CR>
-tnoremap <C-[> <C-\><C-n>
 
 "vvv Work around https://github.com/fannheyward/coc-rust-analyzer/issues/1113
 autocmd FileType * setlocal foldmethod=expr
@@ -139,6 +145,20 @@ augroup END
 " }}}
 
 " COC ----------------------------------------------------------{{{
+
+let g:coc_global_extensions = [
+\   'coc-css',
+\   'coc-json',
+\   'coc-pyright',
+\   'coc-rust-analyzer',
+\   'coc-yaml',
+\   'coc-eslint',
+\   'coc-prettier',
+\   'coc-tsserver',
+\   'coc-ultisnips',
+\   '@yaegassy/coc-tailwindcss3',
+\ ]
+
 " May need for Vim (not Neovim) since coc.nvim calculates byte offset by count
 " utf-8 byte sequence
 set encoding=utf-8
@@ -228,11 +248,10 @@ nmap <leader>ac  <Plug>(coc-codeaction-cursor)
 " Remap keys for apply code actions affect whole buffer
 nmap <leader>as  <Plug>(coc-codeaction-source)
 " Apply the most preferred quickfix action to fix diagnostic on the current line
-nmap <leader>qf  <Plug>(coc-fix-current)
+nmap <leader>af  <Plug>(coc-fix-current)
 
 " Remap keys for applying refactor code actions
 nmap <silent> <leader>re <Plug>(coc-codeaction-refactor)
-xmap <silent> <leader>r  <Plug>(coc-codeaction-refactor-selected)
 nmap <silent> <leader>r  <Plug>(coc-codeaction-refactor-selected)
 
 " Run the Code Lens action on the current line
@@ -260,6 +279,16 @@ command! -nargs=? Fold :call     CocAction('fold', <f-args>)
 command! -nargs=0 OR   :call     CocActionAsync('runCommand', 'editor.action.organizeImport')
 nnoremap <silent> <leader>m :OR<CR>
 
+nmap <C-b> :NERDTreeToggle<CR>
+nmap <leader><CR> :vert sb #<CR>
+nmap <leader>k :bnext<CR>
+nmap <leader>j :bprevious<CR>
+nmap <leader>q :bnext <bar> bdelete #<CR>
+nmap <leader>l :vsplit term://powershell <CR>
+let g:NERDCreateDefaultMappings = 0
+" vnoremap <leader>cc :call nerdcommenter#Comment('x','toggle')<CR>
+tnoremap <C-[> <C-\><C-n>
+
 " Add (Neo)Vim's native statusline support
 " NOTE: Please see `:h coc-status` for integrations with external plugins that
 " provide custom statusline: lightline.vim, vim-airline
@@ -270,24 +299,14 @@ nnoremap <silent> <leader>m :OR<CR>
 nnoremap <silent><nowait> <leader>a  :<C-u>CocList diagnostics<cr>
 " Manage extensions
 nnoremap <silent><nowait> <leader>e  :<C-u>CocList extensions<cr>
-" Show commands
-nnoremap <silent><nowait> <leader>c  :<C-u>CocList commands<cr>
-" Find symbol of current document
-nnoremap <silent><nowait> <leader>o  :<C-u>CocList outline<cr>
-" Search workspace symbols
-nnoremap <silent><nowait> <leader>s  :<C-u>CocList -I symbols<cr>
-" Do default action for next item
-nnoremap <silent><nowait> <leader>j  :<C-u>CocNext<CR>
-" Do default action for previous item
-nnoremap <silent><nowait> <leader>k  :<C-u>CocPrev<CR>
-" Resume latest coc list
-nnoremap <silent><nowait> <leader>p  :<C-u>CocListResume<CR>
 " }}}
+
 
 " TREESITTER --- {{{
 
 lua <<EOF
 require'nvim-treesitter.configs'.setup {
+    ensure_installed = {"lua","c","python","rust","javascript","typescript"},
     highlight={enable=true},
     indent={enable=true},
 }
