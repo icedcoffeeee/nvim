@@ -99,7 +99,7 @@ set tabstop=4
 set expandtab
 set scrolloff=10
 set incsearch
-set guifont=BlexMonoTextNerdFontMono-Regular:h14
+set guifont=CaskaydiaCoveNerdFont-Regular:h14
 set nowrap
 set clipboard=unnamed
 set laststatus=2 " for lightline.vim
@@ -289,6 +289,14 @@ let g:NERDCreateDefaultMappings = 0
 " vnoremap <leader>cc :call nerdcommenter#Comment('x','toggle')<CR>
 tnoremap <C-[> <C-\><C-n>
 
+inoremap " ""<left>
+inoremap ' ''<left>
+inoremap ( ()<left>
+inoremap [ []<left>
+inoremap { {}<left>
+inoremap {<CR> {<CR>}<ESC>O
+inoremap {;<CR> {<CR>};<ESC>O
+
 " Add (Neo)Vim's native statusline support
 " NOTE: Please see `:h coc-status` for integrations with external plugins that
 " provide custom statusline: lightline.vim, vim-airline
@@ -306,7 +314,7 @@ nnoremap <silent><nowait> <leader>e  :<C-u>CocList extensions<cr>
 
 lua <<EOF
 require'nvim-treesitter.configs'.setup {
-    ensure_installed = {"lua","c","python","rust","javascript","typescript"},
+    ensure_installed = {"lua", "c", "python", "rust", "javascript", "typescript"},
     highlight={enable=true},
     indent={enable=true},
 }
