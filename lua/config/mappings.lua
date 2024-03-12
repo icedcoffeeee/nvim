@@ -9,6 +9,7 @@ map("n", "<leader>q", ":bd<cr>", opts) -- close buffer
 
 map("n", "<leader>l", ":vs term://powershell<cr>", opts) -- open vertical terminal
 map("n", "<leader><cr>", ":vert sb #<cr>", opts) -- open vertical prev buffer
+map("t", "<C-[>", "<C-\\><C-n>", opts) -- exit terminal with escape
 
 -- autoclosing
 map("i", "(", "()<left>", opts)

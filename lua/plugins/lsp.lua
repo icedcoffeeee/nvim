@@ -10,8 +10,6 @@ return {
 			ensure_installed = {
 				"stylua",
 				"prettier",
-				"isort",
-				"black",
 			},
 		},
 	},
