@@ -1,6 +1,3 @@
-require "libs"
-require "config"
-require "opts"
-require "servers"
-require "maps"
-require "utils"
+require("config.options")
+require("config.lazy")
+require("config.mappings")
