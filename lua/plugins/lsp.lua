@@ -53,7 +53,6 @@ return {
 					"tsserver",
 					"tailwindcss",
 					"svelte",
-					"eslint",
 				},
 				handlers = {
 					lsp_zero.default_setup,
