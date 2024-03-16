@@ -13,13 +13,9 @@ return {
 	},
 	config = function(_, opts)
 		local api = require("nvim-tree.api")
-		vim.keymap.set("n", "<C-b>", api.tree.toggle, {
-			desc = "nvim-tree: toggle",
-			buffer = bufnr,
-			noremap = true,
-			silent = true,
-			nowait = true,
-		})
+		vim.keymap.set("n", "<C-b>", function()
+			api.tree.toggle({ find_file = true, focus = true })
+		end, { noremap = true, silent = true, nowait = true })
 
 		require("nvim-tree").setup(opts)
 	end,

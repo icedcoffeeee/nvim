@@ -12,6 +12,7 @@ o.cursorlineopt = "number"
 
 -- Indenting
 o.expandtab = true
+o.nowrap = true
 o.shiftwidth = 2
 o.smartindent = true
 o.tabstop = 2
