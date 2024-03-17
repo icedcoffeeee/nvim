@@ -9,6 +9,7 @@ vim.g.have_nerd_font = true
 
 -- Default tabstop too large
 vim.opt.tabstop = 2
+vim.opt.expandtab = true
 
 -- [[ Setting options ]]
 -- See `:help vim.opt`
