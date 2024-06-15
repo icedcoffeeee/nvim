@@ -1,0 +1,29 @@
+{
+  "React Native Page": {
+    "prefix": ["rnpage"],
+    "body": [
+      "import { Text, View } from \"react-native\"\n\n",
+      "export default function $0(){",
+      "\treturn (",
+      "\t\t<View>",
+      "\t\t\t<Text>$0</Text>",
+      "\t\t</View>",
+      "\t)",
+      "}"
+    ]
+  },
+  "React Native Layout": {
+    "prefix": ["rnlayout"],
+    "body": [
+      "import { Stack, Tabs } from \"react-native\"\n\n",
+      "export default function $0(){",
+      "\treturn (",
+      "\t\t<>",
+      "\t\t\t<Stack.Screen />",
+      "\t\t\t<Tabs />",
+      "\t\t</>",
+      "\t)",
+      "}"
+    ]
+  }
+}

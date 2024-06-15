@@ -9,7 +9,11 @@ vim.g.have_nerd_font = true
 
 -- Default tabstop too large
 vim.opt.tabstop = 2
+vim.opt.shiftwidth = 2
 vim.opt.expandtab = true
+
+-- disable wrapping
+vim.opt.wrap = false
 
 -- [[ Setting options ]]
 -- See `:help vim.opt`
@@ -69,6 +73,14 @@ vim.opt.cursorline = true
 -- Minimal number of screen lines to keep above and below the cursor.
 vim.opt.scrolloff = 10
 
+-- Folding
+vim.opt.foldexpr = "v:lua.vim.treesitter.foldexpr()"
+vim.opt.foldtext = "v:lua.vim.treesitter.foldtext()"
+
+vim.opt.shell = "powershell"
+vim.opt.shellcmdflag = "-ExecutionPolicy RemoteSigned -command"
+vim.opt.shellxquote = ""
+
 -- Disable initial file search
 vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
@@ -76,3 +88,12 @@ vim.g.loaded_netrwPlugin = 1
 -- Set highlight on search, but clear on pressing <Esc> in normal mode
 vim.opt.hlsearch = true
 vim.keymap.set("n", "<Esc>", "<cmd>nohlsearch<CR>")
+
+-- vim cursors
+vim.cmd([[
+let &t_ti.="\e[1 q"
+let &t_SI.="\e[5 q"
+let &t_EI.="\e[1 q"
+let &t_te.="\e[0 q"
+:au VimLeave * set guicursor=a:ver25-blinkon2
+]])

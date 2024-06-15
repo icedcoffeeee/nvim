@@ -11,13 +11,15 @@ return {
 				"markdown",
 				"vimdoc",
 				"typescript",
+				"tsx",
 				"python",
 				"svelte",
+				"latex",
 			},
 			-- Autoinstall languages that are not installed
 			-- auto_install = true,
 			highlight = { enable = true },
-			indent = { enable = true },
+			-- indent = { enable = true },
 		},
 		config = function(_, opts)
 			-- [[ Configure Treesitter ]] See `:help nvim-treesitter`

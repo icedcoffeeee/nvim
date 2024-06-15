@@ -36,4 +36,10 @@ return {
 			--  Check out: https://github.com/echasnovski/mini.nvim
 		end,
 	},
+	-- {
+	-- 	"lervag/vimtex",
+	-- 	init = function()
+	-- 		vim.g.vimtex_quickfix_mode = 0
+	-- 	end,
+	-- },
 }

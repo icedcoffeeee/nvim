@@ -10,6 +10,15 @@
           "svelte"
         ],
         "path": "./svelte.json"
+      },
+      {
+        "language": [
+          "javasript",
+          "javascriptreact",
+          "typescript",
+          "typescriptreact"
+        ],
+        "path": "./tsx.json"
       }
     ]
   }

@@ -22,4 +22,5 @@ return {
 	},
 	"gosukiwi/vim-smartpairs",
 	{ "windwp/nvim-ts-autotag", opts = {} },
+	"tpope/vim-surround",
 }
