@@ -17,6 +17,21 @@ return {
 			-- - sr)'  - [S]urround [R]eplace [)] [']
 			require("mini.surround").setup()
 
+			-- Remember the last opened files
+			local mini = require("mini.sessions")
+			mini.setup()
+
+			local get_folder = function()
+				local path = vim.fn.split(vim.fn.getcwd(), "\\")
+				return path[#path]
+			end
+			vim.keymap.set("n", "|", function()
+				mini.read(get_folder())
+			end)
+			vim.keymap.set("n", "<M-\\>", function()
+				mini.write(get_folder())
+			end)
+
 			-- Simple and easy statusline.
 			--  You could remove this setup call if you don't like it,
 			--  and try some other statusline plugin
@@ -36,10 +51,4 @@ return {
 			--  Check out: https://github.com/echasnovski/mini.nvim
 		end,
 	},
-	-- {
-	-- 	"lervag/vimtex",
-	-- 	init = function()
-	-- 		vim.g.vimtex_quickfix_mode = 0
-	-- 	end,
-	-- },
 }
