@@ -8,7 +8,7 @@ return {
 			}
 
 			local prettier_files =
-				{ "html", "css", "javascript", "javascriptreact", "typescript", "typescriptreact", "svelte" }
+				{ "html", "css", "json", "javascript", "javascriptreact", "typescript", "typescriptreact", "svelte" }
 			for _, ft in ipairs(prettier_files) do
 				filetype[ft] = { require("formatter.filetypes.html").prettier }
 			end
