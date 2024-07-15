@@ -5,6 +5,7 @@ return {
 			local filetype = {
 				lua = { require("formatter.filetypes.lua").stylua },
 				python = { require("formatter.filetypes.python").black },
+				cpp = { require("formatter.filetypes.cpp").clangformat },
 			}
 
 			local prettier_files =
@@ -19,13 +20,17 @@ return {
 				filetype = filetype,
 			})
 
-			vim.keymap.set("n", "<leader>f", ":Format<CR>", { desc = "[F]ormat buffer", silent = true })
+			local map = function(keymap, command, desc)
+				vim.keymap.set("n", keymap, command, { desc, silent = true })
+			end
+			map("<leader>f", ":Format<CR>", "[F]ormat buffer")
+			map("<leader>F", ":FormatWrite<CR>", "[F]ormat and [W]rite buffer")
 			local augroup = vim.api.nvim_create_augroup
 			local autocmd = vim.api.nvim_create_autocmd
 			augroup("FormatAutoGroup", { clear = true })
 			autocmd("BufWritePost", {
 				group = "FormatAutoGroup",
-				command = ":Format",
+				command = ":FormatWrite",
 			})
 		end,
 	},
