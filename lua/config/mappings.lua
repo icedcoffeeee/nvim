@@ -4,7 +4,6 @@ map("n", "[d", vim.diagnostic.goto_prev, { desc = "Go to previous [D]iagnostic m
 map("n", "]d", vim.diagnostic.goto_next, { desc = "Go to next [D]iagnostic message", silent = true })
 map("n", "<leader>e", vim.diagnostic.open_float, { desc = "Show diagnostic [E]rror messages", silent = true })
 map("n", "<leader>q", vim.diagnostic.setloclist, { desc = "Open diagnostic [Q]uickfix list", silent = true })
-map("i", "<C-h>", vim.lsp.buf.signature_help, { desc = "Signature [H]elp", silent = true })
 
 -- Exit terminal mode in the builtin terminal with a shortcut that is a bit easier
 -- for people to discover. Otherwise, you normally need to press <C-\><C-n>, which
