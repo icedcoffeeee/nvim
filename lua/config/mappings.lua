@@ -14,8 +14,8 @@ map("i", "<C-h>", vim.lsp.buf.signature_help, { desc = "Signature [H]elp", silen
 -- or just use <C-\><C-n> to exit terminal mode
 map("t", "<Esc>", "<C-\\><C-n>", { desc = "Exit terminal mode", silent = true })
 -- movement maps
-map("n", "<leader>j", ":bp<cr>", { desc = "Previous buffer", silent = true })
-map("n", "<leader>k", ":bn<cr>", { desc = "Next buffer", silent = true })
+map("n", "<leader>j", ":BufferLineCyclePrev<cr>", { desc = "Previous buffer", silent = true })
+map("n", "<leader>k", ":BufferLineCycleNext<cr>", { desc = "Next buffer", silent = true })
 map("n", "<leader>q", ":bn|bd#<cr>", { desc = "Delete buffer", silent = true })
 map("n", "<leader>l", ":vs term://powershell<cr>a", { desc = "Open vertical terminal", silent = true })
 
