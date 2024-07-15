@@ -12,16 +12,28 @@
       "}"
     ]
   },
-  "React Native Layout": {
-    "prefix": ["rnlayout"],
+  "React Native Stack Layout": {
+    "prefix": ["rnstack"],
     "body": [
-      "import { Stack, Tabs } from \"react-native\"\n\n",
+      "import { Stack } from \"expo-router\"\n\n",
       "export default function $0(){",
       "\treturn (",
-      "\t\t<>",
+      "\t\t<Stack>",
       "\t\t\t<Stack.Screen />",
-      "\t\t\t<Tabs />",
-      "\t\t</>",
+      "\t\t</Stack>",
+      "\t)",
+      "}"
+    ]
+  },
+  "React Native Tabs Layout": {
+    "prefix": ["rntabs"],
+    "body": [
+      "import { Tabs } from \"expo-router\"\n\n",
+      "export default function $0(){",
+      "\treturn (",
+      "\t\t<Tabs>",
+      "\t\t\t<Tabs.Screen />",
+      "\t\t</Tabs>",
       "\t)",
       "}"
     ]
