@@ -57,6 +57,19 @@ return {
 						require("telescope.themes").get_dropdown(),
 					},
 				},
+				pickers = {
+					find_files = {
+						hidden = true,
+						find_command = {
+							"rg",
+							"--files",
+							"--glob",
+							"!{.git/*,.svelte-kit/*,target/*,node_modules/*}",
+							"--path-separator",
+							"/",
+						},
+					},
+				},
 			})
 
 			-- Enable telescope extensions, if they are installed
