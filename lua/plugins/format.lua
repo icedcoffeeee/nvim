@@ -6,6 +6,8 @@ return {
 				lua = { require("formatter.filetypes.lua").stylua },
 				python = { require("formatter.filetypes.python").black },
 				cpp = { require("formatter.filetypes.cpp").clangformat },
+				rust = { require("formatter.filetypes.rust").rustfmt },
+				dart = { require("formatter.filetypes.dart").dartformat },
 			}
 
 			local prettier_files =

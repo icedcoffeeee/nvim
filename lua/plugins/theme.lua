@@ -24,7 +24,7 @@ return {
 		priority = 1000,
 		opts = {
 			style = "deep",
-			-- transparent = true,
+			transparent = true,
 		},
 		init = function()
 			vim.cmd.colorscheme("onedark")
