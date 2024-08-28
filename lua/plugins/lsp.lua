@@ -29,6 +29,9 @@ return {
 			"lua_ls",
 			"tsserver",
 			"svelte",
+			"tailwindcss",
+			"emmet_language_server",
+			"astro",
 			"pyright",
 			"rust_analyzer",
 			"texlab",
@@ -76,6 +79,7 @@ return {
 			vim.keymap.set("n", "<leader>gr", vim.lsp.buf.references, opts)
 			vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename, opts)
 			vim.keymap.set("i", "<C-h>", vim.lsp.buf.signature_help, opts)
+			vim.keymap.set("n", "<S-L>", ":LspRestart<CR>", opts)
 		end)
 
 		lsp.setup()

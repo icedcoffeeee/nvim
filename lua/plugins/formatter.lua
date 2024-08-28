@@ -24,8 +24,17 @@ return {
 				},
 			}
 
-			local prettier_files =
-				{ "html", "css", "json", "javascript", "javascriptreact", "typescript", "typescriptreact", "svelte" }
+			local prettier_files = {
+				"html",
+				"css",
+				"json",
+				"javascript",
+				"javascriptreact",
+				"typescript",
+				"typescriptreact",
+				"svelte",
+				"astro",
+			}
 			for _, ft in ipairs(prettier_files) do
 				filetype[ft] = { require("formatter.defaults.prettier") }
 			end
@@ -46,14 +55,6 @@ return {
 
 			map("<leader>f", ":Format<CR>", "[F]ormat buffer")
 			map("<leader>F", ":FormatWrite<CR>", "[F]ormat and [W]rite buffer")
-
-			local augroup = vim.api.nvim_create_augroup
-			local autocmd = vim.api.nvim_create_autocmd
-			augroup("FormatAutoGroup", { clear = true })
-			autocmd("BufWritePost", {
-				group = "FormatAutoGroup",
-				command = ":FormatWrite",
-			})
 		end,
 	},
 }
