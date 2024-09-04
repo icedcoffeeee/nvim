@@ -6,3 +6,5 @@ vim.lsp.start({
 	cmd = cmd,
 	root_dir = vim.fs.dirname(vim.fs.find({ "project.godot", ".git" }, { upward = true })[1]),
 })
+
+vim.opt.expandtab = false

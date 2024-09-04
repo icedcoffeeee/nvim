@@ -6,7 +6,7 @@ return {
 			local util = require("formatter.util")
 			local filetype = {
 				lua = { require("formatter.filetypes.lua").stylua },
-				python = { require("formatter.filetypes.python").black },
+				python = { require("formatter.filetypes.python").ruff },
 				cpp = { require("formatter.filetypes.cpp").clangformat },
 				rust = { require("formatter.filetypes.rust").rustfmt },
 				dart = { require("formatter.filetypes.dart").dartformat },
@@ -15,10 +15,7 @@ return {
 					function()
 						return {
 							exe = "gdformat",
-							args = {
-								util.escape_path(util.get_current_buffer_file_path()),
-								"--use-spaces=2",
-							},
+							args = { util.escape_path(util.get_current_buffer_file_path()) },
 						}
 					end,
 				},

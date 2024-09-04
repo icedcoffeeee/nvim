@@ -19,6 +19,11 @@ return {
 			},
 		},
 	},
+  {
+    "Mofiqul/vscode.nvim",
+    lazy = false,
+		priority = 100,
+  },
 	"xiyaowong/transparent.nvim",
 	{
 		"akinsho/bufferline.nvim",
