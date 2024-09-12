@@ -36,9 +36,11 @@ vim.opt.scrolloff = 10
 vim.opt.foldexpr = "v:lua.vim.treesitter.foldexpr()"
 vim.opt.foldtext = "v:lua.vim.treesitter.foldtext()"
 
-vim.opt.shell = "powershell"
-vim.opt.shellcmdflag = "-ExecutionPolicy RemoteSigned -command"
-vim.opt.shellxquote = ""
+if vim.loop.os_uname().sysname ~= "Linux" then
+	vim.opt.shell = "powershell"
+	vim.opt.shellcmdflag = "-ExecutionPolicy RemoteSigned -command"
+	vim.opt.shellxquote = ""
+end
 
 vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1

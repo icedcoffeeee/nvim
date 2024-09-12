@@ -37,7 +37,7 @@ return {
 			end
 
 			require("mason-tool-installer").setup({
-				ensure_installed = { "stylua", "black", "clang-format", "prettier", "gdtoolkit" },
+				ensure_installed = { "stylua", "clang-format", "prettier", "gdtoolkit" },
 			})
 
 			require("formatter").setup({

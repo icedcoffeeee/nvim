@@ -12,7 +12,12 @@ vim.keymap.set("t", "<Esc>", "<C-\\><C-n>", { desc = "Exit terminal mode", silen
 map("<leader>j", ":BufferLineCyclePrev<cr>", "Previous buffer")
 map("<leader>k", ":BufferLineCycleNext<cr>", "Next buffer")
 map("<leader>q", ":bn|bd#<cr>", "Delete buffer")
-map("<leader>l", ":vs term://powershell<cr>a", "Open vertical terminal")
+
+local term = "powershell"
+if vim.loop.os_uname().sysname == "Linux" then
+	term = "bash"
+end
+map("<leader>l", ":vs term://" .. term .. "<cr>a", "Open vertical terminal")
 
 --  Use CTRL+<hjkl> to switch between windows
 map("<C-h>", "<C-w><C-h>", "Move focus to the left window")

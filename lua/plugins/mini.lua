@@ -5,7 +5,6 @@ return {
 			-- Better Around/Inside textobjects
 			require("mini.ai").setup({ n_lines = 500 })
 			-- Add/delete/replace surroundings (brackets, quotes, etc.)
-			require("mini.surround").setup()
 			-- Remember the last opened files
 			local sessions = require("mini.sessions")
 			sessions.setup()

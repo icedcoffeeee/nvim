@@ -3,4 +3,4 @@ require("config.mappings")
 require("config.lazy")
 
 vim.cmd[[colorscheme onedark]]
-vim.cmd[[:TransparentEnable]]
+vim.cmd[[:TransparentDisable]]
