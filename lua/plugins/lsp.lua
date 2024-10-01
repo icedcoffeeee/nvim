@@ -45,7 +45,7 @@ return {
 		lsp.configure("pyright", { settings = { python = { analysis = { typeCheckingMode = { "off" } } } } })
 		lsp.configure(
 			"texlab",
-			{ settings = { texlab = { build = { args = { "-pdf", "-pvc", "-synctex=1", "%f" } } } } }
+			{ settings = { texlab = { build = { args = { "-lualatex", "-pvc", "-synctex=1", "%f" } } } } }
 		)
 
 		local cmp = require("cmp")
