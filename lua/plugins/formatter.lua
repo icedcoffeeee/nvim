@@ -4,10 +4,13 @@ return {
 		config = function()
 			local filetype = {
 				lua = require("formatter.filetypes.lua").stylua,
+
 				cpp = require("formatter.filetypes.cpp").clangformat,
+				glsl = require("formatter.filetypes.cpp").clangformat,
+
 				python = require("formatter.filetypes.python").ruff,
 				rust = require("formatter.filetypes.rust").rustfmt,
-				tex = require("formatter.filetypes.latex").latexindent,
+				tex = require("formatter.filetypes.tex").latexindent,
 				gdscript = { exe = "gdformat" },
 			}
 
