@@ -9,7 +9,7 @@ return {
 		{ "j-hui/fidget.nvim", opts = {} },
 		{ "folke/neodev.nvim", opts = {} },
 
-		-- Autocompletin
+		-- Autocompletion
 		"hrsh7th/nvim-cmp",
 		"hrsh7th/cmp-buffer",
 		"hrsh7th/cmp-path",
@@ -39,12 +39,12 @@ return {
 				vim.keymap.set("n", "gi", vim.lsp.buf.implementation, opts)
 				vim.keymap.set("n", "go", vim.lsp.buf.type_definition, opts)
 				vim.keymap.set("n", "gr", vim.lsp.buf.references, opts)
-				vim.keymap.set("n", "<C-H>", vim.lsp.buf.signature_help, opts)
+				vim.keymap.set("i", "<C-h>", vim.lsp.buf.signature_help, opts)
 				vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename, opts)
 				vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, opts)
 				vim.keymap.set("n", "]d", vim.diagnostic.goto_next, opts)
 				vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, opts)
-				vim.keymap.set("n", "<S-L>", ":LspRestart<CR>", opts)
+				vim.keymap.set("n", "<S-l>", ":LspRestart<CR>", opts)
 			end,
 		})
 
@@ -126,7 +126,8 @@ return {
 
 		local cmp = require("cmp")
 		local cmp_action = require("lsp-zero").cmp_action()
-		local cmp_format = require("lsp-zero").cmp_format({ details = true })
+		local cmp_format = require("lsp-zero").cmp_format({ details = false })
+		local cmp_select = { behavior = cmp.SelectBehavior.Select }
 		cmp.setup({
 			sources = {
 				{ name = "nvim_lsp" },
@@ -138,10 +139,10 @@ return {
 				completeopt = "menu,menuone,noinsert",
 			},
 			mapping = cmp.mapping.preset.insert({
-				["<CR>"] = cmp.mapping.confirm({ select = false }),
+				["<S-Tab>"] = cmp.mapping.select_prev_item(cmp_select),
+				["<Tab>"] = cmp.mapping.select_next_item(cmp_select),
+				["<CR>"] = cmp.mapping.confirm({ select = true }),
 				["<C-k>"] = cmp.mapping.complete(),
-				["<Tab>"] = cmp_action.tab_complete(),
-				["<S-Tab>"] = cmp.mapping.select_prev_item({ behavior = "select" }),
 				-- Scroll up and down the documentation window
 				["<C-u>"] = cmp.mapping.scroll_docs(-4),
 				["<C-d>"] = cmp.mapping.scroll_docs(4),
@@ -164,14 +165,5 @@ return {
 		})
 
 		vim.diagnostic.config({ virtual_text = true, float = { border = "single" } })
-
-		-- LuaSnip
-		local ls = require("luasnip")
-		vim.keymap.set({ "i", "s" }, "<C-L>", function()
-			ls.jump(1)
-		end, { silent = true })
-		vim.keymap.set({ "i", "s" }, "<C-J>", function()
-			ls.jump(-1)
-		end, { silent = true })
 	end,
 }
