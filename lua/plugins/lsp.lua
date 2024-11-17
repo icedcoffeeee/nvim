@@ -69,7 +69,6 @@ return {
 				"texlab",
 
 				"ts_ls",
-				"denols",
 				"svelte",
 				"tailwindcss",
 				"astro",
@@ -118,9 +117,6 @@ return {
 					root_dir = lsp.util.root_pattern("package.json"),
 					single_file_support = false,
 				})
-			end,
-			denols = function()
-				lsp.denols.setup({ root_dir = lsp.util.root_pattern("deno.json", "deno.jsonc") })
 			end,
 		})
 

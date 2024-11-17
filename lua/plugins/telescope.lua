@@ -7,26 +7,25 @@ return {
 			"nvim-telescope/telescope-ui-select.nvim",
 			"nvim-tree/nvim-web-devicons",
 		},
-		opts = {
-			defaults = { file_ignore_patterns = { "node_modules" } },
-			extensions = { ["ui-select"] = { require("telescope.themes").get_dropdown() } },
-			pickers = {
-				find_files = {
-					hidden = true,
-					find_command = {
-						"rg",
-						"--files",
-						"--glob",
-						"!{.git/*,.svelte-kit/*,target/*,node_modules/*}",
-						"--path-separator",
-						"/",
+		config = function()
+			local TS = require("telescope")
+			TS.setup({
+				defaults = { file_ignore_patterns = { "node_modules" } },
+				extensions = { ["ui-select"] = { require("telescope.themes").get_dropdown() } },
+				pickers = {
+					find_files = {
+						hidden = true,
+						find_command = {
+							"rg",
+							"--files",
+							"--glob",
+							"!{.git/*,.svelte-kit/*,target/*,node_modules/*}",
+							"--path-separator",
+							"/",
+						},
 					},
 				},
-			},
-		},
-		config = function(opts)
-			local TS = require("telescope")
-			TS.setup(opts)
+			})
 
 			pcall(TS.load_extension, "fzf")
 			pcall(TS.load_extension, "ui-select")
