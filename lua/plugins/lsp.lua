@@ -48,16 +48,7 @@ return {
 			end,
 		})
 
-		local border = {
-			{ "🭽", "FloatBorder" },
-			{ "▔", "FloatBorder" },
-			{ "🭾", "FloatBorder" },
-			{ "▕", "FloatBorder" },
-			{ "🭿", "FloatBorder" },
-			{ "▁", "FloatBorder" },
-			{ "🭼", "FloatBorder" },
-			{ "▏", "FloatBorder" },
-		}
+		local border = { border = "single" }
 		local lsp = require("lspconfig")
 		require("mason").setup({})
 		require("mason-lspconfig").setup({
@@ -78,46 +69,39 @@ return {
 				function(server_name)
 					lsp[server_name].setup({
 						handlers = {
-							["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, { border = border }),
-							["textDocument/signatureHelp"] = vim.lsp.with(
-								vim.lsp.handlers.signature_help,
-								{ border = border }
-							),
+							["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, border),
+							["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, border),
 						},
 					})
 				end,
 			},
+		})
 
-			lua_ls = function()
-				lsp.lua_ls.setup({
-					settings = { Lua = { diagnostic = { disable = { "missing-fields" } } } },
-				})
-			end,
-			pyright = function()
-				lsp.pyright.setup({
-					settings = { python = { analysis = { typeCheckingMode = { "off" } } } },
-				})
-			end,
-			tailwindcss = function()
-				lsp.tailwindcss.setup({
-					settings = {
-						tailwindCSS = {
-							classAttributes = { "class", "className", "class:list", ".*ClassName.*", "tw" },
-						},
+		lsp.lua_ls.setup({
+			settings = { Lua = { diagnostic = { disable = { "missing-fields" } } } },
+		})
+		lsp.pyright.setup({
+			settings = { python = { analysis = { typeCheckingMode = { "off" } } } },
+		})
+		lsp.tailwindcss.setup({
+			settings = {
+				tailwindCSS = {
+					classAttributes = { "class", "className", "class:list", ".*ClassName.*", "tw" },
+				},
+			},
+		})
+		lsp.texlab.setup({
+			settings = {
+				texlab = {
+					build = {
+						args = { "-lualatex", "-pvc", "-synctex=1", "%f" },
 					},
-				})
-			end,
-			texlab = function()
-				lsp.texlab.setup({
-					settings = { texlab = { build = { args = { "-lualatex", "-pvc", "-synctex=1", "%f" } } } },
-				})
-			end,
-			ts_ls = function()
-				lsp.ts_ls.setup({
-					root_dir = lsp.util.root_pattern("package.json"),
-					single_file_support = false,
-				})
-			end,
+				},
+			},
+		})
+		lsp.ts_ls.setup({
+			root_dir = lsp.util.root_pattern("package.json"),
+			single_file_support = false,
 		})
 
 		local cmp = require("cmp")
@@ -160,6 +144,6 @@ return {
 			},
 		})
 
-		vim.diagnostic.config({ virtual_text = true, float = { border = "single" } })
+		vim.diagnostic.config({ virtual_text = true, float = border })
 	end,
 }
