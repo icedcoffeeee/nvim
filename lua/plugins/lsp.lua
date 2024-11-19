@@ -44,7 +44,7 @@ return {
 				vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, opts)
 				vim.keymap.set("n", "]d", vim.diagnostic.goto_next, opts)
 				vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, opts)
-				vim.keymap.set("n", "<S-l>", ":LspRestart<CR>", opts)
+				vim.keymap.set("n", "<M-l>", ":LspRestart<CR>", opts)
 			end,
 		})
 
@@ -92,11 +92,7 @@ return {
 		})
 		lsp.texlab.setup({
 			settings = {
-				texlab = {
-					build = {
-						args = { "-lualatex", "-pvc", "-synctex=1", "%f" },
-					},
-				},
+				texlab = { build = { args = { "-lualatex", "-pvc", "-synctex=1", "%f" } } },
 			},
 		})
 		lsp.ts_ls.setup({
