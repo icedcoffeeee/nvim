@@ -81,7 +81,7 @@ return {
 			settings = { Lua = { diagnostic = { disable = { "missing-fields" } } } },
 		})
 		lsp.pyright.setup({
-			settings = { python = { analysis = { typeCheckingMode = { "off" } } } },
+			settings = { python = { analysis = { typeCheckingMode = "off" } } },
 		})
 		lsp.tailwindcss.setup({
 			settings = {
@@ -142,7 +142,7 @@ return {
 
 		vim.diagnostic.config({ virtual_text = true, float = border })
 
-    -- for rust-analyzer https://github.com/neovim/neovim/issues/30985
+		-- for rust-analyzer https://github.com/neovim/neovim/issues/30985
 		for _, method in ipairs({ "textDocument/diagnostic", "workspace/diagnostic" }) do
 			local default_diagnostic_handler = vim.lsp.handlers[method]
 			vim.lsp.handlers[method] = function(err, result, context, config)
