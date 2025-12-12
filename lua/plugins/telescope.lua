@@ -32,9 +32,7 @@ return {
 
 			-- See `:help telescope.builtin`
 			local builtin = require("telescope.builtin")
-			local map = function(kmap, func, desc)
-				vim.keymap.set("n", kmap, func, { desc = desc })
-			end
+			local map = function(kmap, func, desc) vim.keymap.set("n", kmap, func, { desc = desc }) end
 			map("<leader>sh", builtin.help_tags, "[S]earch [H]elp")
 			map("<leader>sk", builtin.keymaps, "[S]earch [K]eymaps")
 			map("<leader><leader>", builtin.find_files, "[S]earch [F]iles")
@@ -46,23 +44,33 @@ return {
 			map("<leader>s.", builtin.oldfiles, '[S]earch Recent Files ("." for repeat)')
 			map("<leader>sb", builtin.buffers, "[ ] Find existing buffers")
 
-			map("<leader>/", function()
-				builtin.current_buffer_fuzzy_find(require("telescope.themes").get_dropdown({
-					winblend = 10,
-					previewer = false,
-				}))
-			end, "[/] Fuzzily search in current buffer")
+			map(
+				"<leader>/",
+				function()
+					builtin.current_buffer_fuzzy_find(require("telescope.themes").get_dropdown({
+						winblend = 10,
+						previewer = false,
+					}))
+				end,
+				"[/] Fuzzily search in current buffer"
+			)
 
-			map("<leader>s/", function()
-				builtin.live_grep({
-					grep_open_files = true,
-					prompt_title = "Live Grep in Open Files",
-				})
-			end, "[S]earch [/] in Open Files")
+			map(
+				"<leader>s/",
+				function()
+					builtin.live_grep({
+						grep_open_files = true,
+						prompt_title = "Live Grep in Open Files",
+					})
+				end,
+				"[S]earch [/] in Open Files"
+			)
 
-			map("<leader>sn", function()
-				builtin.find_files({ cwd = vim.fn.stdpath("config") })
-			end, "[S]earch [N]eovim files")
+			map(
+				"<leader>sn",
+				function() builtin.find_files({ cwd = vim.fn.stdpath("config") }) end,
+				"[S]earch [N]eovim files"
+			)
 		end,
 	},
 }

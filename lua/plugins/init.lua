@@ -1,7 +1,5 @@
 local hologram = {}
-if vim.loop.os_uname().sysname == "Linux" then
-	hologram = { "edluffy/hologram.nvim", opts = {} }
-end
+if vim.loop.os_uname().sysname == "Linux" then hologram = { "edluffy/hologram.nvim", opts = {} } end
 
 return {
 	{ "windwp/nvim-ts-autotag", opts = {} },

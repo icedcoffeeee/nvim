@@ -11,17 +11,11 @@ return {
 			local set = vim.keymap.set
 
 			-- Add or skip cursor above/below the main cursor.
-			set({ "n", "v" }, "<C-k>", function()
-				mc.lineAddCursor(-1)
-			end)
-			set({ "n", "v" }, "<C-j>", function()
-				mc.lineAddCursor(1)
-			end)
+			set({ "n", "v" }, "<C-k>", function() mc.lineAddCursor(-1) end)
+			set({ "n", "v" }, "<C-j>", function() mc.lineAddCursor(1) end)
 
 			-- Add or skip adding a new cursor by matching word/selection
-			set({ "n", "v" }, "<C-n>", function()
-				mc.matchAddCursor(1)
-			end)
+			set({ "n", "v" }, "<C-n>", function() mc.matchAddCursor(1) end)
 
 			-- Add all matches in the document
 			set({ "n", "v" }, "<M-A>", mc.matchAllAddCursors)
@@ -33,14 +27,13 @@ return {
 			set({ "n", "v" }, "<c-q>", mc.toggleCursor)
 
 			set("n", "<esc>", function()
+				vim.cmd([[nohlsearch]])
 				if not mc.cursorsEnabled() then
 					mc.enableCursors()
 				elseif mc.hasCursors() then
 					mc.clearCursors()
-				else
-					-- Default <esc> handler.
 				end
-			end)
+			end, { desc = "Remove cursors and highlight" })
 
 			-- Append/insert for each line of visual selections.
 			set("v", "I", mc.insertVisual)

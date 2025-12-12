@@ -17,28 +17,30 @@ return {
 			local filetype = {
 				lua = require("formatter.filetypes.lua").stylua,
 
+				c = require("formatter.filetypes.cpp").clangformat,
 				cpp = require("formatter.filetypes.cpp").clangformat,
 				glsl = require("formatter.filetypes.cpp").clangformat,
 
 				python = require("formatter.filetypes.python").ruff,
 				rust = require("formatter.filetypes.rust").rustfmt,
 				tex = require("formatter.filetypes.tex").latexindent,
-				gdscript = { exe = "gdformat" },
+				nix = require("formatter.filetypes.nix").nixfmt,
+
+				typst = function() return { exe = "typstyle", args = { "-i" } } end,
 			}
 
-			local biome = {
+			local prettier = {
 				"css",
 				"javascript",
+				"json",
 				"typescript",
 				"typescriptreact",
-				"json",
+				"astro",
+				"html",
+				"svelte",
 			}
-			for _, lang in ipairs(biome) do
-				filetype[lang] = require("formatter.defaults.biome")
-			end
-			local prettier = { "html", "svelte", "astro", unpack(biome) }
 			for _, lang in ipairs(prettier) do
-				filetype[lang] = require("formatter.defaults.prettier")
+				filetype[lang] = require("formatter.defaults.prettierd")
 			end
 
 			require("formatter").setup({ filetype = filetype })

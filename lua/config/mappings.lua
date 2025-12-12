@@ -1,6 +1,4 @@
-local map = function(kmap, cmd, desc)
-	vim.keymap.set("n", kmap, cmd, { desc = desc, silent = true })
-end
+local map = function(kmap, cmd, desc) vim.keymap.set("n", kmap, cmd, { desc = desc, silent = true }) end
 
 -- Diagnostic keymaps
 map("<leader>e", vim.diagnostic.open_float, "Show diagnostic [E]rror messages")
@@ -14,9 +12,7 @@ map("<leader>k", ":BufferLineCycleNext<cr>", "Next buffer")
 map("<leader>q", ":bn|bd#<cr>", "Delete buffer")
 
 local term = "powershell"
-if vim.loop.os_uname().sysname == "Linux" then
-	term = "bash"
-end
+if vim.loop.os_uname().sysname == "Linux" then term = "bash" end
 map("<leader>l", ":vs term://" .. term .. "<cr>a", "Open vertical terminal")
 
 --  Use CTRL+<hjkl> to switch between windows
@@ -29,7 +25,5 @@ map("<C-k>", "<C-w><C-k>", "Move focus to the upper window")
 vim.api.nvim_create_autocmd("TextYankPost", {
 	desc = "Highlight when yanking (copying) text",
 	group = vim.api.nvim_create_augroup("kickstart-highlight-yank", { clear = true }),
-	callback = function()
-		vim.highlight.on_yank()
-	end,
+	callback = function() vim.highlight.on_yank() end,
 })
