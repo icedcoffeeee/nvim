@@ -485,7 +485,7 @@ do
 	vim.lsp.enable("astro")
 	vim.lsp.config("biome", __wrapConfig({}))
 	vim.lsp.enable("biome")
-	vim.lsp.config("clangd", __wrapConfig({}))
+	vim.lsp.config("clangd", __wrapConfig({ cmd = { "clangd", "--query-driver=c++" } }))
 	vim.lsp.enable("clangd")
 	vim.lsp.config("emmet_language_server", __wrapConfig({}))
 	vim.lsp.enable("emmet_language_server")
