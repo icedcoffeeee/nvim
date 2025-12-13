@@ -112,6 +112,7 @@ require("nvim-treesitter.configs").setup({
 		"latex",
 		"lua",
 		"markdown",
+		"nix",
 		"python",
 		"svelte",
 		"tsx",
@@ -433,7 +434,7 @@ do
 				require("flash").jump()
 			end,
 			key = "S",
-			mode = { "n", "x", "o" },
+			mode = { "n" },
 			options = { desc = "Flash" },
 		},
 		{
