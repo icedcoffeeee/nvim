@@ -27,7 +27,7 @@ end
 -- Setup lazy.nvim
 require("pckr").add({
 	"navarasu/onedark.nvim",
-  "tpope/vim-surround",
+	"tpope/vim-surround",
 	"nvim-tree/nvim-web-devicons",
 	"nvim-mini/mini.nvim",
 	"hrsh7th/nvim-cmp",
