@@ -101,7 +101,7 @@ cmp.setup({
 require("nvim-ts-autotag").setup({})
 
 vim.opt.runtimepath:prepend(vim.fs.joinpath(vim.fn.stdpath("data"), "site"))
-require("nvim-treesitter.configs").setup({
+require("nvim-treesitter.config").setup({
 	auto_install = false,
 	ensure_installed = {
 		"c",
