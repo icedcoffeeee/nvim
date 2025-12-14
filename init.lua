@@ -104,8 +104,8 @@ require("pckr").add({
 					["mason-nvim-dap"] = true,
 				},
 			})
-
-			require("config")
 		end,
 	},
 })
+
+require("config")
