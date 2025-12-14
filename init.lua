@@ -24,7 +24,7 @@ do
 	end
 end
 
--- Setup lazy.nvim
+-- Setup pckr.nvim
 require("pckr").add({
 	"navarasu/onedark.nvim",
 	"tpope/vim-surround",
@@ -88,7 +88,6 @@ require("pckr").add({
 					"latexindent",
 					"prettier",
 					"ruff",
-					"rustfmt",
 					"shfmt",
 					"stylua",
 					"stylua",
